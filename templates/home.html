@@ -1,0 +1,21 @@
+{% extends 'base/header.html' %}
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <title>Home</title>
+{% endblock %}
+{% block body %}
+
+    <main class="todo-container">
+        <h1 class="todo-title">My Todo List</h1>
+
+        <!-- List will be dynamically inserted here -->
+        <ul id="todo-list" class="todo-list"></ul>
+        <div class="todo-add">
+            <input type="text" id="new-todo" placeholder="Enter new todo..." />
+            <button id="add-todo-btn">Add</button>
+        </div>
+    </main>
+    {% load static %}
+    <script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

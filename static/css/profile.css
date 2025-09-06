@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+}
+
+.profile-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.profile-box {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    width: 350px;
+    text-align: center;
+}
+
+.profile-box h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.profile-box p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+#delete-profile-btn {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#delete-profile-btn:hover {
+    background-color: #c82333;
+}

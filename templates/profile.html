@@ -1,0 +1,25 @@
+{% extends 'base/header.html' %}
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <title>Profile</title>
+{% endblock %}
+{% block body %}
+
+    <div class="profile-body">
+        <div class="profile-box">
+            <h2>Profile</h2>
+            <p>Username: <span id="username">{{ request.user.username }}</span></p>
+            <p>Total Tasks: <span id="task-count">{{ request.user.userwork.count }}</span></p>
+
+            <button id="delete-profile-btn">Delete Profile</button>
+        </div>
+    </div>
+
+
+    <script src="{% static 'js/profile.js' %}"></script>
+{% endblock %}
+
+
+
+
