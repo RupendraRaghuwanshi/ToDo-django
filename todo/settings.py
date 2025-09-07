@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-vb40ie-#x@pzu!wn6ia^hv@!tqe!1k1tte^$lo057zchp47u-z'
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config("DEBUG",default=False,cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','localhost','todopro.onrender.com']
 
 
 # Application definition
@@ -73,14 +74,24 @@ WSGI_APPLICATION = 'todo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config("DNAME"),        
+        'USER': config("DUSER"),         
+        'PASSWORD': config("DPASS"),  
+        'HOST': config("DHOST"),
+        'PORT': config("DPORT"),
+        'OPTIONS':{
+            'sslmode': config("DSMODE"),
+            'sslrootcert': None,
+        }
     }
 }
 
-
+#postgresql://tododb_c23z_user:JUYvkcTC61Su0CMVybnf82QJKPPJXZZq@dpg-d2uge87fte5s73b4rjug-a.oregon-postgres.render.com/tododb_c23z
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -119,6 +130,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static/'),
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # collectstatic yahan copy karega
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
